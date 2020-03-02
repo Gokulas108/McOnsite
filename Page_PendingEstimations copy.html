@@ -1,0 +1,83 @@
+<div ng-controller="scaffPendingEstimates"> 
+<h2 class="font-weight-bold">Submit Estimations :</h2>
+<form>            
+<input type="search" class="form-control mr-sm-2" placeholder="Search using any field" ng-model="searchsearch" aria-label="Search"/>
+</form>
+<br> 
+<h6 style="color: darkgray;">Click on Headers to sort in ascending or descending</h6> 
+
+<div class="table-responsive">
+<table class="table table-bordered table-striped table-sm"> 
+<thead class="thead-dark">
+    <th>
+       <a href="" ng-click="sortType = 'TASK_ID'; sortReverse = !sortReverse">
+            Task ID
+            <span ng-show="sortType == 'TASK_ID' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'TASK_ID' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+            
+    <th>
+        <a href="" ng-click="sortType = 'WO'; sortReverse = !sortReverse">
+            Work Order
+            <span ng-show="sortType == 'WO' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'WO' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+            
+    <th>
+        <a href="" ng-click="sortType = 'ERE_AMT_TOTAL'; sortReverse = !sortReverse">
+            Erection Cost
+            <span ng-show="sortType == 'ERE_AMT_TOTAL' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'ERE_AMT_TOTAL' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+    
+    <th>
+       <a href="" ng-click="sortType = 'HIRE_AMT_TOTAL'; sortReverse = !sortReverse">
+            Hire Cost
+            <span ng-show="sortType == 'HIRE_AMT_TOTAL' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'HIRE_AMT_TOTAL' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+
+    <th>
+        <a href="" ng-click="sortType = 'DIS_AMT_TOTAL'; sortReverse = !sortReverse">
+            Dismantle Cost
+            <span ng-show="sortType == 'DIS_AMT_TOTAL' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'DIS_AMT_TOTAL' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th>
+
+    <th>
+        <a href="" ng-click="sortType = 'TOTAL_AMT'; sortReverse = !sortReverse">
+            Total Cost
+            <span ng-show="sortType == 'TOTAL_AMT' && !sortReverse" class="fa fa-caret-down"></span>
+            <span ng-show="sortType == 'TOTAL_AMT' && sortReverse" class="fa fa-caret-up"></span>
+        </a>
+    </th> 
+
+    <th colspan="4">
+       <span>Action</span>
+    </th>  
+</thead>
+
+        <tbody>
+            <tr ng-repeat="x in records | orderBy:sortType:sortReverse | filter:searchsearch">
+                <td>{{ x.TASK_ID }}</td>
+                <td>{{ x.WO }}</td>
+                <td>{{ x.ERE_AMT_TOTAL }}</td>
+                <td>{{ x.HIRE_AMT_TOTAL }}</td>
+                <td>{{ x.DIS_AMT_TOTAL}}</td>
+                <td>{{ x.TOTAL_AMT }}</td>
+                <td class="bg-dark text-center"><a ng-href="#!/Scaffolding/Estimate/{{x.WorkOrderNo}}" class="btn btn-dark"><i class="fas fa-tasks"></i></a>
+                </td>
+                <td class="bg-primary text-center"><a ng-href="#!/Scaffolding/Estimate//{{x.TASK_ID}}" class="btn btn-primary"><i class="far fa-eye"></i></a>
+                <td class="bg-success text-center"><button type="button" class="btn btn-success"><i class="fas fa-check-circle"></i></button></td>
+                <td class="bg-danger text-center"> 
+                <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
+            </tr>
+        </tbody>
+    </table>
+ </div>    
+ </div>
