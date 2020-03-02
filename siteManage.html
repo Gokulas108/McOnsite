@@ -1,0 +1,284 @@
+<h2 class="font-weight-bold">Add new Notification :</h2>
+<div ng-controller="scaffHome"> 
+        <form novalidate>
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label for="validationServer01">Notification No.</label>
+                    <input type="number" ng-model="newWorkOrder.WorkOrderNo" ng-change="CheckWorkOrderNo()" class="form-control" id="WorkOrderNo" placeholder="Notification No." required="True">
+                    <div class="valid-feedback">
+                      Available
+                    </div>
+                    <div class="invalid-feedback">
+                            Work Order Already exists.
+                          </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationServer02">Notification Date</label>                    
+                    <input id="sdate" class="form-control" name="sdate" type="text" placeholder="--Select a date--" data-uk-datepicker="{format:'DD-MM-YYYY'}" >
+                    <div class="invalid-feedback">
+                      Looks good!
+                    </div>
+                  </div>
+                  <div class="form-group col-md-4">
+                        <label for="inputState">Area</label>
+                        <select id="inputState" class="form-control">
+                          <option selected>Choose...</option>
+                          <option>...</option>
+                          <option>...</option>
+                          <option>...</option>
+                          <option>...</option>
+                          <option>...</option>
+                        </select>
+
+                      <div class="invalid-feedback">
+                        Please choose a username.
+                      </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-4 mb-4">
+                    <label for="validationServer04">Main Work Centre</label>
+                    <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                            <option>...</option>
+                            <option>...</option>
+                            <option>...</option>
+                            <option>...</option>
+                          </select>
+                    <div class="invalid-feedback">
+                      Please provide a valid state.
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-4">
+                    <label for="validationServer05">SPIC Work Centre</label>
+                    <select id="inputState" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                            <option>...</option>
+                            <option>...</option>
+                            <option>...</option>
+                            <option>...</option>
+                          </select>
+                    <div class="invalid-feedback">
+                      Please provide a valid zip.
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-4 text-center">
+                        <br>
+                        <button type="button" data-toggle="modal" data-target="#exampleModal" style="text-align: center" class="btn btn-dark btn-lg ">Add Notifiction</button>
+                        <button type="button" style="text-align: center" class="btn btn-danger btn-lg ">Clear</button>
+                    </div>
+                </div>
+              </form>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+                <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                      <form>
+                      <div class="modal-body">
+                            
+                        <!--Modal form-->
+                        
+                                <div class="form-row">
+                                  <div class="form-group col-md-6">
+                                    <label for="inputEmail4">Work Order No.</label>
+                                    <input type="text" class="form-control" id="inputEmail4" placeholder="Work Order No.">
+                                  </div>
+                                  <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Department</label>
+                                    <input type="text" class="form-control" id="inputPassword4" placeholder="Department">
+                                  </div>
+                                </div>
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                          <label for="inputEmail4">Maintanence Type</label>
+                                          <select id="inputState" class="form-control">
+                                                <option selected>Choose...</option>
+                                                <option>...</option>
+                                                <option>...</option>
+                                                <option>...</option>
+                                                <option>...</option>
+                                                <option>...</option>
+                                              </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                          <label for="inputPassword4">Requestor</label>
+                                          <select id="inputState" class="form-control">
+                                                <option selected>Choose...</option>
+                                                <option>...</option>
+                                                <option>...</option>
+                                                <option>...</option>
+                                                <option>...</option>
+                                                <option>...</option>
+                                              </select>
+                                        </div>
+                                </div>
+                                <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                          <label for="inputEmail4">Job Type</label>
+                                          <select id="inputState" class="form-control">
+                                                <option selected>Choose...</option>
+                                                <option>...</option>
+                                                <option>...</option>
+                                                <option>...</option>
+                                                <option>...</option>
+                                                <option>...</option>
+                                              </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                          <label for="inputPassword4">Start Date</label>
+                                          <input id="sdate" class="form-control" name="sdate" type="text" placeholder="--Select a date--" data-uk-datepicker="{format:'DD-MM-YYYY'}" >
+                                        </div>
+                                      </div>
+                                      <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                              <label for="inputEmail4">Zone</label>
+                                              <select id="inputState" class="form-control">
+                                                    <option selected>Choose...</option>
+                                                    <option>...</option>
+                                                    <option>...</option>
+                                                    <option>...</option>
+                                                    <option>...</option>
+                                                    <option>...</option>
+                                                  </select>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                              <label for="inputPassword4">Finish Date</label>
+                                              <input id="sdate" class="form-control" name="sdate" type="text" placeholder="--Select a date--" data-uk-datepicker="{format:'DD-MM-YYYY'}" >
+                                            </div>
+                                          </div>
+                                          <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                  <label for="inputEmail4">LACD</label>
+                                                  <input type="text" class="form-control" id="inputEmail4" placeholder="LACD">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                  <label for="inputPassword4">Sub Area</label>
+                                                  <input type="text" class="form-control" id="inputPassword4" placeholder="Sub Area">
+                                                </div>
+                                              </div>
+                                              <div class="form-row">
+                                                    <div class="form-group col-md-6">
+                                                      <label for="inputEmail4">LACD Criticality</label>
+                                                      <input type="text" class="form-control" id="inputEmail4" placeholder="LACD Criticality">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                      <label for="inputPassword4">Priority</label>
+                                                      <input type="text" class="form-control" id="inputPassword4" placeholder="Priority">
+                                                    </div>
+                                                  </div>               
+                                <div class="form-group">
+                                  <label for="inputAddress">Description</label>
+                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+                                </div>
+                          </div>
+                          <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                              </div>   
+                            </form>   
+          </div>
+        </div>
+      </div>
+    <hr>
+              
+              <h2 class="font-weight-bold">Pending Notifications :</h2>
+            <form>            
+        <input type="search" class="form-control mr-sm-2" placeholder="Search using any field" ng-model="searchsearch" aria-label="Search"/>
+  </form>
+  <br> 
+ <h6 style="color: darkgray;">Click on Headers to sort in ascending or descending</h6> 
+
+<div class="table-responsive">
+        <table class="table table-bordered table-striped"> 
+            <thead class="thead-dark">
+                <th>
+                   <a href="" ng-click="sortType = 'CapeID'; sortReverse = !sortReverse">
+                        Cape ID
+                        <span ng-show="sortType == 'CapeID' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'CapeID' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                        
+                <th>
+                    <a href="" ng-click="sortType = 'NotificationNo'; sortReverse = !sortReverse">
+                        QG Notification No.
+                        <span ng-show="sortType == 'NotificationNo' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'NotificationNo' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                        
+                <th>
+                    <a href="" ng-click="sortType = 'Date'; sortReverse = !sortReverse">
+                        QG Notification Date
+                        <span ng-show="sortType == 'Date' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'Date' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                
+                <th>
+                   <a href="" ng-click="sortType = 'WorkOrderNo'; sortReverse = !sortReverse">
+                        QG Work Order No.
+                        <span ng-show="sortType == 'WorkOrderNo' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'WorkOrderNo' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+        
+                <th>
+                    <a href="" ng-click="sortType = 'Requestor'; sortReverse = !sortReverse">
+                        Notification Requestor
+                        <span ng-show="sortType == 'Requestor' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'Requestor' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+
+                <th>
+                    <a href="" ng-click="sortType = 'Department'; sortReverse = !sortReverse">
+                        Department
+                        <span ng-show="sortType == 'Department' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'Department' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th> 
+ 
+                <th>
+                   <a href="" ng-click="sortType = 'Priority'; sortReverse = !sortReverse">
+                        Priority
+                        <span ng-show="sortType == 'Priority' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'Priority' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+          
+                <th colspan="4">
+                   <span>Action</span>
+                </th>  
+            </thead>
+
+                    <tbody>
+                        <tr ng-repeat="x in records | orderBy:sortType:sortReverse | filter:searchsearch">
+                            <td>{{ x.CapeID }}</td>
+                            <td>{{ x.NotificationNo }}</td>
+                            <td>{{ x.Date }}</td>
+                            <td>{{ x.WorkOrderNo }}</td>
+                            <td>{{ x.Requestor }}</td>
+                            <td>{{ x.Department}}</td>
+                            <td>{{ x.Priority}}</td>
+                            <td class="bg-dark"><a ng-href="#!/Scaffolding/Estimate/{{x.WorkOrderNo}}" class="btn btn-dark"><i class="fas fa-tasks"></i></a>
+                            </td>
+                            <td class="bg-primary"><button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
+                            </td>
+                            <td class="bg-success"><button type="button" class="btn btn-success"><i class="fas fa-check-circle"></i></button></td>
+                            <td class="bg-danger"> 
+                            <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+             </div>    
+        </div>                        

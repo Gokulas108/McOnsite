@@ -1,0 +1,122 @@
+<div ng-controller="scaffPendingEstimates"> 
+<!-- <h2 class="font-weight-bold">Submit Estimations :</h2> -->
+<div class="parent-container d-flex">    
+    <div style="width:45%" class="container">
+            <h3 ng-If="page.status == 'SE'" class="font-weight-bold">&nbspEstimations to be Submitted :</h3>
+            <h3 ng-If="page.status == 'AE'" class="font-weight-bold">&nbspEstimations to be Acknowledged :</h3>
+            <h3 ng-If="page.status == 'SA'" class="font-weight-bold">&nbspActuals to be Submitted :</h3>
+            <h3 ng-If="page.status == 'AA'" class="font-weight-bold">&nbspActuals to be Approved :</h3>
+            <form>            
+                <input type="search" class="form-control mr-sm-2" placeholder="Search using any field" ng-model="searchsearch" aria-label="Search"/>
+            </form>   
+    <h6 style="color: darkgray;">&nbspClick on Headers to sort in ascending or descending</h6> 
+        <div class="table-responsive">
+        <table class="table table-sm table-bordered table-hover table-striped clickable" id="myTable"> 
+        <thead class="thead-dark">
+            <tr>
+            <th>
+            <a href="" ng-click="sortType = 'TASK_ID'; sortReverse = !sortReverse">
+                    Task ID
+                    <span ng-show="sortType == 'TASK_ID' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'TASK_ID' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+                    
+            <th>
+                <a href="" ng-click="sortType = 'WO'; sortReverse = !sortReverse">
+                    Work Order
+                    <span ng-show="sortType == 'WO' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'WO' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th>
+            <th>
+                <a href="" ng-click="sortType = 'TOTAL_AMT'; sortReverse = !sortReverse">
+                    Total Cost
+                    <span ng-show="sortType == 'TOTAL_AMT' && !sortReverse" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'TOTAL_AMT' && sortReverse" class="fa fa-caret-up"></span>
+                </a>
+            </th> 
+            </tr> 
+        </thead>
+
+                <tbody>
+                    <tr ng-click="clickTable(x)" ng-If="x.TASK_STATUS=='created'" class="table-row clickable-row" ng-repeat="x in records | orderBy:sortType:sortReverse | filter:searchsearch">
+                        <td>{{ x.TASK_ID }}</td>
+                        <td>{{ x.WO }}</td>
+                        <td>QAR {{ x.TOTAL_AMT }}</td>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>   
+    </div>
+    <div class="container">
+            <div class="col-md-12 text-right">
+            <button type="button" data-toggle="modal" data-target="#attachmentModal" class="btn btn-outline-secondary">Export to Excel</button>
+            </div>
+            <hr>
+
+                <div class="card w-100 text-white bg-dark sticky-top scrolltable">
+                    <div class="card-header">Task : </div>
+                    <div style="font-size:20px" ng-If="thisForm.TaskSelected" class="card-body">
+                        <div class="form-row">
+                            <div class="col md-6">Task No.&nbsp;: {{ taskView.TASK_ID }}</div><div class="col md-6">Work Order No. : {{ taskView.WO }}</div>
+                        </div>    
+                        <div class="form-row">
+                            <div class="col md-12"><hr style="color:lightgray;"></div>
+                        </div>
+                        <div class="form-row">
+                              <div class="col md-6">Erection Date &emsp; &nbsp;: {{ taskView.ERE_DATE }}</div> <div class="col md-6">Off-Hire Date&emsp;: {{ taskView.OFF_DATE }}</div>
+                        </div>
+                        <div class="form-row">
+                             <div class="col md-12">Dismantle Date&emsp;&nbsp;: {{ taskView.DIS_DATE }}</div>
+                        </div>    
+                        <div class="form-row">
+                            <div class="col md-12"><hr style="color:lightgray;"></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col md-6">Erection Cost &emsp; : {{ taskView.ERE_AMT_TOTAL }}</div><div class="col md-6">Hire Cost : {{ taskView.HIRE_AMT_TOTAL }}</div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col md-12">Dismantle Cost&emsp;: {{ taskView.DIS_AMT_TOTAL }}</div>
+                        </div>
+                        <div class="form-row">    
+                            <div class="col md-12">
+                                <hr style="color:lightgray;">
+                                                   Total Cost : {{ taskView.TOTAL_AMT }}</div>
+                        </div>
+                    </div>
+                    <div style="font-size:20px" ng-If="!thisForm.TaskSelected" class="card-body">Select a task From the table</div>
+                    <div class="card-footer">
+                        <a ng-If="thisForm.TaskSelected" ng-href="#!/Scaffolding/Estimate/{{x.WorkOrderNo}}" class="btn btn-sm btn-danger text-left">EDIT/VIEW</a>
+                        <button ng-If="thisForm.TaskSelected" data-toggle="modal" data-target="#submitModal" class="btn btn-sm btn-success text-right">SUMBIT</button>
+                    </div>
+                </div>    
+            </div>
+        </div>
+        
+        <!-- MODAL FORM FOR SUBMISSION-->
+      <div class="modal fade bd-example-modal-sm" id="submitModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog" >
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Confirmation</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                
+                <div class="modal-body text-center">
+                  <label>COMMENTS (Optional)</label><br>
+                  <textarea id="comment"></textarea>
+                </div> 
+
+                <div class="modal-footer">
+                    <button type="button"  data-dismiss="modal" class="btn btn-sm btn-danger">CANCEL</button>
+                    <button type="button" ng-model="taskView.comment" class="btn btn-sm btn-success">CONFRIM</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+</div>
